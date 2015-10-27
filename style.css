@@ -1,0 +1,21 @@
+
+div#memoryBoard{
+  background:#CCC;
+  border:#999 1px solid;
+  width:770px;
+  height:540px;
+  padding:21px
+  margin: auto;
+}
+div#memoryBoard > div{
+  background:
+  border: 000 1px solid;
+  width: 70px
+  height: 70px;
+  float:left;
+  margin: 7px;
+  padding: 21px;
+  font-family: sans-serif;
+  font-size: 56px;
+  text-align: center;
+}
