@@ -1,21 +1,24 @@
-
-div#memoryBoard{
-  background:#CCC;
-  border:#999 1px solid;
-  width:770px;
-  padding:21px
-  margin: auto;
-  overflow: auto;
+div#memory_board{
+	background: rgba(0, 0, 0, 0);
+	width:800px;
+	height:540px;
+	padding:24px;
+	margin:0px auto;
 }
-div.card {
-  background: green;
-  border: 000 1px solid;
-  width: 100px;
-  height: 100px;
-  float:left;
-  margin: 7px;
-  padding: 21px;
-  font-family: sans-serif;
-  font-size: 56px;
-  text-align: center;
+div#memory_board > div{
+	background: rgba(220, 236, 220, .7);
+	border:#000 1px solid;
+	width:71px;
+	height:71px;
+	float:left;
+	margin:10px;
+	padding:20px;
+	font-size:64px;
+	cursor:pointer;
+	text-align:center;
+}
+body{
+	background-image: url("IMG_3431 FINAL.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
