@@ -13,17 +13,17 @@ Jimp.read('./img/IMG_3431 FINAL.jpg', function (err, img) {
 	var idNo = 0;
 	
 	for (var i = 0; i < img.bitmap.width; i += img.bitmap.width / memory_array.length) {
-		var randomX = (Math.random() * img.bitmap.width / memory_array.length) - i;
+		var step = (img.bitmap.width / memory_array.length);
+		var randomX = (i  > 0 ? i - step : 0) + (step * Math.random());
 		var RGBA = Jimp.intToRGBA(
-			img.getPixelColor(i, Math.floor(Math.random() * img.bitmap.height))
+			img.getPixelColor(randomX, Math.floor(Math.random() * img.bitmap.height))
 			);
-		$('#tile_' + idNo).css('background-color', [
+		$('#tile_' + idNo).data("flipColor", [
 			'#',
 			convert(RGBA.r),
 			convert(RGBA.b),
 			convert(RGBA.g)
-			].join('')
-			)
+			].join(''))
 		idNo++;
 	}
 })
@@ -52,7 +52,7 @@ function newBoard() {
 }
 function memoryFlipTile(tile, val) {
 	if (tile.innerHTML == "" && memory_values.length < 2) {
-		tile.style.background = '#DCECDC';
+		
 		tile.innerHTML = val;
 		if (memory_values.length == 0) {
 			memory_values.push(val);
@@ -61,6 +61,11 @@ function memoryFlipTile(tile, val) {
 			memory_values.push(val);
 			memory_tile_ids.push(tile.id);
 			if (memory_values[0] == memory_values[1]) {
+				memory_tile_ids.forEach(function(item){
+					var $selector = $('#' + item);
+					$selector.css('background-color', $selector.data('flipColor') || '#DCECDC');
+				})
+				
 				tiles_flipped += 2;
 				// Clear both arrays
 				memory_values = [];
